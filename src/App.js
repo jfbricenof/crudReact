@@ -3,6 +3,13 @@ import UserTable from './components/UserTable';
 import {v4 as uuidv4} from 'uuid';
 import AddUserForm from './components/AddUserForm';
 import EditUserForm from './components/EditUserForm';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  NavLink
+} from "react-router-dom";
 
 
 const App = () => {
@@ -48,40 +55,53 @@ const App = () => {
 
 
   return (
+  <Router>
     <div className="container">
-      <h1>CRUD App with Hooks</h1>
-      <div className="flex-row">
-        <div className="flex-large">
-          {
-            editing?(
-            <div>
-                <h2>Editar usuario </h2>
-                <EditUserForm 
-                currentUser={currentUser}
-                updateUser={updateUser}
-                />
-            </div>
-            ) : (
-            <div> 
-              <h2>Añadir usuario </h2>
-              <AddUserForm addUser={addUser}/>
-            </div>
-            )
+      <h1>CRUD App with Hooks y Rutas</h1>
+      <hr />
+      <Switch>
+            <Route path="/" exact>
+              <div className="flex-row">
+              <div className="flex-large">
+                {
+                  editing?(
+                  <div>
+                      <h2>Editar usuario </h2>
+                      <EditUserForm 
+                      currentUser={currentUser}
+                      updateUser={updateUser}
+                      />
+                  </div>
+                  ) : (
+                  <div> 
+                    <h2>Añadir usuario </h2>
+                    <AddUserForm addUser={addUser}/>
+                  </div>
+                  )
 
-          }
-         
-        </div>
-        <div className="flex-large">
-          <h2>View users</h2>
-          <UserTable 
-          users={users} 
-          deleteUser={deleteUser} 
-          editRow={editRow}
-          />
-        </div>
-      </div>
+                }
+              
+              </div>
+              <div className="flex-large">
+                <h2>View users</h2>
+                <UserTable 
+                users={users} 
+                deleteUser={deleteUser} 
+                editRow={editRow}
+                />
+              </div>
+            </div>
+          </Route>
+          <Route path="/contacto">
+                  pagina de contacto
+          </Route>
+        </Switch>
     </div>
-  )
+  </Router>
+
+  );
 }
 
 export default App
+
+
