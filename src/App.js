@@ -10,6 +10,8 @@ import {
   Link,
   NavLink
 } from "react-router-dom";
+import Contacto from './components/Contacto';
+import Nosotros from './components/Nosotros';
 
 
 const App = () => {
@@ -56,8 +58,18 @@ const App = () => {
 
   return (
   <Router>
-    <div className="container">
-      <h1>CRUD App with Hooks y Rutas</h1>
+    <div className="container mt-5">
+      <div className="btn-group">
+        <Link to="/nosotros" className="btn btn-dark">
+        Nosotros
+        </Link>
+        <Link to="/contacto" className="btn btn-dark">
+        Contacto
+        </Link>
+        <NavLink to="/" className="btn btn-dark" activeClassName="">
+        Inicio
+        </NavLink>
+      </div>
       <hr />
       <Switch>
             <Route path="/" exact>
@@ -93,7 +105,10 @@ const App = () => {
             </div>
           </Route>
           <Route path="/contacto">
-                  pagina de contacto
+                 <Contacto/>
+          </Route>
+          <Route path="/nosotros">
+                 <Nosotros/>
           </Route>
         </Switch>
     </div>
