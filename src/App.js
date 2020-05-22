@@ -12,6 +12,7 @@ import {
 } from "react-router-dom";
 import Contacto from './components/Contacto';
 import Nosotros from './components/Nosotros';
+import Civilizacion from './components/Civilizacion';
 
 
 const App = () => {
@@ -60,6 +61,7 @@ const App = () => {
   <Router>
     <div className="container mt-5">
       <div className="btn-group">
+        
         <Link to="/nosotros" className="btn btn-dark">
         Nosotros
         </Link>
@@ -72,6 +74,9 @@ const App = () => {
       </div>
       <hr />
       <Switch>
+            <Route path="/nosotros/:id" exact>
+                 <Civilizacion/>
+            </Route>
             <Route path="/" exact>
               <div className="flex-row">
               <div className="flex-large">
